@@ -84,6 +84,38 @@
                     LMCDP
                 </div>
             </div>
+            
+            <div class="content">
+                <button id="btn-token">Token</button>
+            </div>
+
         </div>
     </body>
+    <script>
+        function login() {
+            fetch('http://localhost:8000/oauth/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    'grant_type': 'password',
+                    'client_id': '7',
+                    'client_secret': 'CCqO6pQ4W0a5MLH39QcqeXz0gxefqQzFV5wlXwBY',
+                    'username': 'federico1818@gmail.com',
+                    'password': '1234',
+                    'scope': '*',
+                })
+            }).then(response => response.json())
+                .then(data => {
+
+                })
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnToken = document.getElementById('btn-token')
+            btnToken.addEventListener('click', login)
+        })
+    </script>
 </html>
