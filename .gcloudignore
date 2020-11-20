@@ -15,3 +15,7 @@
 
 # PHP Composer dependencies:
 /vendor/
+
+# Files
+README.md
+app.yaml.example
