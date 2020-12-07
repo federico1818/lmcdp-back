@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'Laravel\Passport\Exceptions\OAuthServerException' => [
+        'response' => [
+            'title' => 'Credenciales incorrectas',
+            'message' => 'Email o contraseña incorrecta.'
+        ],
+        'code' => 401
+    ],
 
     'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' => [
         'response' => [
