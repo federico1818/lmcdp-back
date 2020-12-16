@@ -1,5 +1,32 @@
 # LMCDP
 
+## Install
+
+1. Install composer dependencies
+
+```sh
+composer install
+```
+
+2. Copy and edit the .env file
+
+```sh
+cp .env.example .env
+```
+
+3. Run migrations
+
+```sh
+php artisan migrate
+```
+
+4. Install passport keys
+
+```sh
+php artisan passport:install
+```
+
+
 ## Development
 
 1. Pull the Docker image google/cloud-sdk 
