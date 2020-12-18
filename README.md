@@ -14,13 +14,19 @@ composer install
 cp .env.example .env
 ```
 
-3. Run migrations
+3. Generate application encryption key
+
+```sh
+php artisan key:generate
+```
+
+4. Run migrations
 
 ```sh
 php artisan migrate
 ```
 
-4. Install passport keys
+5. Install passport keys
 
 ```sh
 php artisan passport:install
