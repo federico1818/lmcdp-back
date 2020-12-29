@@ -14,14 +14,18 @@ class PasswordResetEmail extends Mailable
     use SerializesModels;
 
     public $user;
+    public $token;
+    public $url;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, String $token)
     {
         $this->user = $user;
+        $this->token = $token;
+        $this->url = $this->generateUrl();
     }
 
     /**
@@ -33,4 +37,10 @@ class PasswordResetEmail extends Mailable
     {
         return $this->view('emails.auth.password-reset');
     }
+
+    protected function generateUrl()
+    {
+        return env('APP_URL_FRONT') . '/password/reset/' . $this->token . '?email=' . $this->user->email;
+    }
+    
 }

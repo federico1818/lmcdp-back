@@ -8,7 +8,7 @@
             </tr>
             <tr>
                 <td class="pt-2">
-                    <a class="btn" href="#">Reestablecer contraseña</a>
+                    <a class="btn" href="{{ $url }}" target="_blank">Reestablecer contraseña</a>
                 </td>
             </tr>
             <tr>
@@ -26,5 +26,5 @@
 @endsection
 
 @section('footer')
-    Si tienes problemas al hacer click en el botón, puedes copiar y pegar la siguiente URL:  <a href="#">url</a>
+    Si tienes problemas al hacer click en el botón, puedes copiar y pegar la siguiente URL:  <a href="{{ $url }}" target="_blank">{{ $url }}</a>
 @endsection
