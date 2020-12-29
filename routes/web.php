@@ -12,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+use App\Notifications\PasswordResetNotification;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/notification', function () {
+    $user = User::first();
+    
+    return (new PasswordResetNotification('dsdadadas'))->toMail($user);
 });

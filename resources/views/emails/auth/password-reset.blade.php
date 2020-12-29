@@ -7,17 +7,17 @@
                 <td>Estás recibiendo este email porque hemos recibido una solicitud para recuperar la contraseña</td>
             </tr>
             <tr>
-                <td>
-                    <a href="#">Reestablecer contraseña</a>
+                <td class="pt-2">
+                    <a class="btn" href="#">Reestablecer contraseña</a>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="text-center">
                     <small>Este link expirará en 60 minutos</small>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="pt-3">
                     Si no lo has solicitado, no es necesaria ninguna acción, sólo ignora el mensaje.
                 </td>
             </tr>

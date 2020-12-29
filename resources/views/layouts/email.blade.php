@@ -2,6 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
         <style type="text/css">
+            small {
+                font-size: 11px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+            
             .body {
                 background-color: #1d0f4a;
                 color: #ffffff;
@@ -14,6 +22,8 @@
             }
 
             .table-email {
+                font-size: 16px;
+                line-height: 20px;
                 max-width: 480px;
             }
 
@@ -40,13 +50,50 @@
 
             .email-body {
                 padding-top: 32px;
-                padding-bottom: 32px;
+                padding-bottom: 24px;
             }
 
             .email-footer {
-                padding-top: 8px;
-                padding-bottom: 8px;
                 font-size: 12px;
+                line-height: 16px;
+                padding-top: 8px;
+                padding-bottom: 24px;
+            }
+
+            .email-footer-td {
+                border-top: 1px solid #b7b5c0;
+                padding-top: 16px;
+            }
+
+            .btn {
+                border: 0;
+                border-radius: 16px;
+                background-color: #ffffff;
+                color: #00ac98;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 18px;
+                height: 48px;
+                line-height: 48px;
+                display: block;
+                text-align: center;
+                width: auto;
+                max-width: 320px;
+                margin: auto;
+            }
+
+            /* Utils */
+
+            .text-center {
+                text-align: center;
+            }
+
+            .pt-2 {
+                padding-top: 16px;
+            }
+
+            .pt-3 {
+                padding-top: 24px;
             }
 
         </style>
@@ -61,7 +108,15 @@
                     <td class="email-body">@yield('body')</td>
                 </tr>
                 <tr>
-                    <td class="email-footer">@yield('footer')</td>
+                    <td class="email-footer">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="email-footer-td">@yield('footer')</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
                 </tr>
             </tbody>
         </table>
