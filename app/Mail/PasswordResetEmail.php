@@ -40,7 +40,7 @@ class PasswordResetEmail extends Mailable
 
     protected function generateUrl()
     {
-        return env('APP_URL_FRONT') . '/password/reset/' . $this->token . '?email=' . $this->user->email;
+        return env('APP_URL_FRONT') . '/password/reset/' . $this->token . '/' . $this->user->email;
     }
-    
+
 }
