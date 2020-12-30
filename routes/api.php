@@ -21,4 +21,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Auth::routes();
-//Route::post('/password/email', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
