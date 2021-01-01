@@ -29,7 +29,5 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
-        
-        //Route::post('/oauth/register', '\App\Http\Controllers\Auth\RegisterController@register');
     }
 }
