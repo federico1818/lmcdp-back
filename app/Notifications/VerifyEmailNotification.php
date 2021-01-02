@@ -30,6 +30,21 @@ class VerifyEmailNotification extends VerifyEmail
     }
 
     /**
+     * Get the verification URL for the given notifiable.
+     *
+     * @param  mixed  $notifiable
+     * @return string
+     */
+    protected function verificationUrl($notifiable)
+    {
+        return env('APP_URL_FRONT') . 
+                '/email/verify/' . 
+                $notifiable->getKey() . 
+                '/' . 
+                sha1($notifiable->getEmailForVerification());
+    }
+
+    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
