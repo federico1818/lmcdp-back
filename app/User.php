@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Notifications\PasswordResetNotification;
 use App\Notifications\VerifyEmailNotification;
+use App\UserState;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -62,4 +63,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new VerifyEmailNotification);
     }
 
+    public function state()
+    {
+        return $this->belongsTo(UserState::class);
+    }
 }

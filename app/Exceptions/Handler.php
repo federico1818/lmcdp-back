@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
-    {
+    {   
         $error = new CustomError($exception);
         
         if($error->isConfigured())
