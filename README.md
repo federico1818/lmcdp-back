@@ -44,7 +44,7 @@ docker pull google/cloud-sdk
 2. Run container
 
 ```sh
-docker run -it -d --name gcloud -v ${PWD}:/src google/cloud-sdk bash
+docker run -it -d --name gcloud -v ${PWD}:/src -p 3306:3306 google/cloud-sdk bash
 ```
 
 3. Execute container
@@ -75,4 +75,36 @@ gcloud config set project lmcdp-296100
 
 ```sh
 gcloud app deploy
+```
+
+## Conectar con base de datos
+
+1. Descargar proxy
+
+```sh
+wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
+```
+
+2. Dar permisos de ejecución
+
+```sh
+chmod +x cloud_sql_proxy
+```
+
+3. Login
+
+```sh
+gcloud auth login
+```
+
+4. Set the project
+
+```sh
+gcloud config set project lmcdp-296100
+```
+
+5. Ejecutar proxy
+
+```sh
+./cloud_sql_proxy -instances=lmcdp-296100:southamerica-east1:lmcdp=tcp:3306
 ```
