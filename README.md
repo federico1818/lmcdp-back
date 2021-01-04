@@ -33,7 +33,7 @@ php artisan passport:install
 ```
 
 
-## Development
+## Deploy
 
 1. Pull the Docker image google/cloud-sdk 
 
@@ -51,4 +51,28 @@ docker run -it -d --name gcloud -v ${PWD}:/src google/cloud-sdk bash
 
 ```sh
 docker exec -it gcloud bash
+```
+
+4. Replace YOUR_APP_KEY in app.yaml with an application key you generate with the following command
+
+```sh
+php artisan key:generate --show
+```
+
+5. Login
+
+```sh
+gcloud auth login
+```
+
+6. Set the project
+
+```sh
+gcloud config set project lmcdp-296100
+```
+
+7. Deploy your app
+
+```sh
+gcloud app deploy
 ```

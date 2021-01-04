@@ -1,4 +1,5 @@
 runtime: php72
+service: default
 
 env_variables:
     APP_KEY: YOUR_APP_KEY
