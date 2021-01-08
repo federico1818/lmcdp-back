@@ -8,12 +8,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Notifications\PasswordResetNotification;
 use App\Notifications\VerifyEmailNotification;
-use App\UserState;
+use App\Models\UserState;
+use App\Traits\RolesAndPermissions;
 
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable;
+    use RolesAndPermissions, HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
