@@ -74,4 +74,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Game::class);
     }
+
+    public function hasUnfinishedGames(): bool
+    {
+        return true;
+    }
 }

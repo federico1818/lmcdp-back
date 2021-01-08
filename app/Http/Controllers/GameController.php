@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\GameStoreRequest;
+use App\Core\Access\Authorization;
+use App\Core\Exception\GameNotOverException;
 use App\Models\Game;
 
 class GameController extends Controller
@@ -26,6 +28,9 @@ class GameController extends Controller
      */
     public function store(GameStoreRequest $request)
     {
+        Authorization::authorize('create', Game::class, GameNotOverException::class);
+        //$this->authorize('create', Game::class);
+
         $game = new Game($request->attributes());
 
         return $request->user()->games()->save($game);

@@ -23,6 +23,14 @@ return [
             'message' => 'No se han guardado los datos correctamente.'
         ],
         'code' => 503
+    ],
+    
+    'App\Core\Exception\GameNotOverException' => [
+        'response' => [
+            'title' => 'No se puede crear el partido',
+            'message' => 'Aún tiene un partido sin finalizar.'
+        ],
+        'code' => 409
     ]
 
 ];
