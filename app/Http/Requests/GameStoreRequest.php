@@ -24,7 +24,16 @@ class GameStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'ball_id' => ['required', 'integer', 'exists:balls,id'],
+            'platform_id' => ['required', 'integer', 'exists:platforms,id'],
         ];
+    }
+
+    public function attributes()
+    {
+        return $this->only([
+            'ball_id',
+            'platform_id'
+        ]);
     }
 }

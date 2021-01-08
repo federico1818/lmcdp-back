@@ -26,7 +26,9 @@ class GameController extends Controller
      */
     public function store(GameStoreRequest $request)
     {
-        return $request->user()->games()->save(new Game);
+        $game = new Game($request->attributes());
+
+        return $request->user()->games()->save($game);
     }
 
     /**
