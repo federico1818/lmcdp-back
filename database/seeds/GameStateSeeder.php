@@ -13,10 +13,10 @@ class GameStateSeeder extends Seeder
     {
         DB::table('game_states')->insert([
             [
-                'name' => 'receiving-requests'
+                'name' => 'matchmaking'
             ],
             [
-                'name' => 'request-accepted'
+                'name' => 'accepted'
             ],
             [
                 'name' => 'in-game'

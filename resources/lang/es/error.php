@@ -20,7 +20,7 @@ return [
     'Illuminate\Database\QueryException' => [
         'response' => [
             'title' => 'Error de conexión',
-            'message' => 'No es posible conectarse con la base de datos.'
+            'message' => 'No se han guardado los datos correctamente.'
         ],
         'code' => 503
     ]
