@@ -18,6 +18,8 @@ class CreateGamesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('ball_id')->constrained();
             $table->foreignId('platform_id')->constrained();
+            $table->unsignedBigInteger('state_id')->default(1);
+            $table->foreign('state_id')->references('id')->on('game_states');
             $table->timestamps();
         });
     }
