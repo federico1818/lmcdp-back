@@ -22,6 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => 'api'], function() {
+Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('/games', 'GameController');
 });

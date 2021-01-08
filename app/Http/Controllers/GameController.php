@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use Illuminate\Http\Request;
+use App\Http\Requests\GameStoreRequest;
+use App\Models\Game;
 
 class GameController extends Controller
 {
@@ -23,9 +24,9 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GameStoreRequest $request)
     {
-        //
+        return $request->user()->games()->save(new Game);
     }
 
     /**
@@ -36,7 +37,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return $game;
     }
 
     /**

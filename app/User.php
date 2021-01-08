@@ -8,8 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Notifications\PasswordResetNotification;
 use App\Notifications\VerifyEmailNotification;
-use App\Models\UserState;
 use App\Traits\RolesAndPermissions;
+use App\Models\UserState;
+use App\Models\Game;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -67,5 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function state()
     {
         return $this->belongsTo(UserState::class);
+    }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class);
     }
 }
