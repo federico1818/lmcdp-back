@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Ball;
 use App\Models\Platform;
+use App\Models\GameRequest;
 
 class Game extends Model
 {
@@ -32,5 +33,10 @@ class Game extends Model
     public function state()
     {
         return $this->belongsTo(GameState::class);
+    }
+
+    public function requests()
+    {
+        return $this->hasMany(GameRequest::class);
     }
 }

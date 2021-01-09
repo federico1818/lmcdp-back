@@ -11,6 +11,7 @@ use App\Notifications\VerifyEmailNotification;
 use App\Traits\RolesAndPermissions;
 use App\Models\UserState;
 use App\Models\Game;
+use App\Models\GameRequest;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -73,6 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function games()
     {
         return $this->hasMany(Game::class);
+    }
+
+    public function requests()
+    {
+        return $this->hasMany(GameRequest::class);
     }
 
     public function hasUnfinishedGames(): bool
