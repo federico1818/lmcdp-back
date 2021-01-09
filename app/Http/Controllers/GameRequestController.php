@@ -32,7 +32,9 @@ class GameRequestController extends Controller
             'game_id' => $game->id
         ]);
      
-        return $request->user()->requests()->save($gameRequest);
+        $request->user()->requests()->save($gameRequest);
+
+        return $gameRequest;
     }
 
     /**
