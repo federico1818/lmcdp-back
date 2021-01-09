@@ -28,11 +28,10 @@ class GameRequestController extends Controller
     {
         $this->authorize('create', [GameRequest::class, $game]);
         
-        $gameRequest = new GameRequest([
-            'game_id' => $game->id
+        $gameRequest = GameRequest::create([
+            'game_id' => $game->id,
+            'user_id' => $request->user()->id
         ]);
-     
-        $request->user()->requests()->save($gameRequest);
 
         return $gameRequest;
     }
