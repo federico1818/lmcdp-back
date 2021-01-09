@@ -22,7 +22,7 @@ class GameStateSeeder extends Seeder
                 'name' => 'in-game'
             ],
             [
-                'name' => 'game-over'
+                'name' => 'finished'
             ]
         ]);
     }

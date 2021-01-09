@@ -77,6 +77,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasUnfinishedGames(): bool
     {
-        return true;
+        return $this->games()
+                    ->whereHas('state', function($query) {
+                        $query->where('name', '<>', 'finished');
+                    })
+                    ->exists();
     }
 }

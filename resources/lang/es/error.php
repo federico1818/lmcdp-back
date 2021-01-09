@@ -28,7 +28,7 @@ return [
     'App\Core\Exception\GameNotOverException' => [
         'response' => [
             'title' => 'No se puede crear el partido',
-            'message' => 'Aún tiene un partido sin finalizar.'
+            'message' => 'Aún tienes un partido sin finalizar. Debes dar por terminado el partido antes de crear uno nuevo.'
         ],
         'code' => 409
     ]
