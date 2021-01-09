@@ -31,6 +31,14 @@ return [
             'message' => 'Aún tienes un partido sin finalizar. Debes dar por terminado el partido antes de crear uno nuevo.'
         ],
         'code' => 409
+    ],
+
+    'App\Core\Exception\GameRequestOwnGameException' => [
+        'response' => [
+            'title' => 'No puedes crear la solicitud',
+            'message' => 'No está permitido jugar contra ti mismo un partido.'
+        ],
+        'code' => 409
     ]
 
 ];

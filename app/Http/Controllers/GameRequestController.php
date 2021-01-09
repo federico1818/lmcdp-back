@@ -26,6 +26,8 @@ class GameRequestController extends Controller
      */
     public function store(Request $request, Game $game)
     {
+        $this->authorize('create', [GameRequest::class, $game]);
+        
         $gameRequest = new GameRequest([
             'game_id' => $game->id
         ]);

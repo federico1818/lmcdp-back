@@ -4,10 +4,11 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Game;
-use App\Core\Exception\GameNotOverException;
+use App\Models\GameRequest;
+use App\Core\Exception\GameRequestOwnGameException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class GamePolicy
+class GameRequestPolicy
 {
     use HandlesAuthorization;
 
@@ -26,10 +27,10 @@ class GamePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Models\Game  $game
+     * @param  \App\Models\GameRequest  $gameRequest
      * @return mixed
      */
-    public function view(User $user, Game $game)
+    public function view(User $user, GameRequest $gameRequest)
     {
         //
     }
@@ -40,11 +41,11 @@ class GamePolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Game $game)
     {
-        if($user->hasUnfinishedGames())
-            throw new GameNotOverException;
-
+        if($user->id == $game->user_id)
+            throw new GameRequestOwnGameException;
+        
         return true;
     }
 
@@ -52,10 +53,10 @@ class GamePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Models\Game  $game
+     * @param  \App\Models\GameRequest  $gameRequest
      * @return mixed
      */
-    public function update(User $user, Game $game)
+    public function update(User $user, GameRequest $gameRequest)
     {
         //
     }
@@ -64,10 +65,10 @@ class GamePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Models\Game  $game
+     * @param  \App\Models\GameRequest  $gameRequest
      * @return mixed
      */
-    public function delete(User $user, Game $game)
+    public function delete(User $user, GameRequest $gameRequest)
     {
         //
     }
@@ -76,10 +77,10 @@ class GamePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Models\Game  $game
+     * @param  \App\Models\GameRequest  $gameRequest
      * @return mixed
      */
-    public function restore(User $user, Game $game)
+    public function restore(User $user, GameRequest $gameRequest)
     {
         //
     }
@@ -88,10 +89,10 @@ class GamePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Models\Game  $game
+     * @param  \App\Models\GameRequest  $gameRequest
      * @return mixed
      */
-    public function forceDelete(User $user, Game $game)
+    public function forceDelete(User $user, GameRequest $gameRequest)
     {
         //
     }
