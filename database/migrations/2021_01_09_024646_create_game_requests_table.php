@@ -17,6 +17,7 @@ class CreateGameRequestsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('game_id')->constrained();
+            $table->dateTimeTz('accepted_at')->nullable();
             $table->unique(['user_id', 'game_id']);
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\GameRequest;
+use App\Core\Processes\AcceptGameRequest;
 use Illuminate\Http\Request;
 
 class GameRequestController extends Controller
@@ -79,5 +80,14 @@ class GameRequestController extends Controller
     public function destroy(GameRequest $gameRequest)
     {
         //
+    }
+
+    public function accept(GameRequest $gameRequest)
+    {
+        $this->authorize('accept', $gameRequest);
+
+        (new AcceptGameRequest)($gameRequest);
+
+        return $gameRequest;
     }
 }

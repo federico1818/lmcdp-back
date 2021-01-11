@@ -89,4 +89,13 @@ class User extends Authenticatable implements MustVerifyEmail
                     })
                     ->exists();
     }
+    
+    public function getUnfinishedGameAttribute(): Game
+    {
+        return $this->games()
+                    ->whereHas('state', function($query) {
+                        $query->where('name', '<>', 'finished');
+                    })
+                    ->first();
+    }
 }

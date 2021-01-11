@@ -51,6 +51,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {   
+        //dd($exception);
+        
         $error = new CustomError($exception);
         
         if($error->isConfigured())

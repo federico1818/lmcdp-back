@@ -5,7 +5,9 @@ namespace App\Policies;
 use App\User;
 use App\Models\Game;
 use App\Models\GameRequest;
-use App\Core\Exception\GameRequestOwnGameException;
+use App\Exceptions\GameRequestOwnGameException;
+use App\Exceptions\GameRequestDuplicateException;
+use App\Exceptions\GameRequestAcceptNotOwnGameException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GameRequestPolicy
@@ -45,6 +47,9 @@ class GameRequestPolicy
     {
         if($user->id == $game->user_id)
             throw new GameRequestOwnGameException;
+            
+        if($game->requests()->where('user_id', $user->id)->exists())
+            throw new GameRequestDuplicateException;    
         
         return true;
     }
@@ -95,5 +100,13 @@ class GameRequestPolicy
     public function forceDelete(User $user, GameRequest $gameRequest)
     {
         //
+    }
+
+    public function accept(User $user, GameRequest $gameRequest)
+    {
+        if($user->id != $gameRequest->game->user->id)
+            throw new GameRequestAcceptNotOwnGameException;
+        
+        return true;
     }
 }

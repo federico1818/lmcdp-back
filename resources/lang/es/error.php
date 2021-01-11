@@ -25,18 +25,42 @@ return [
         'code' => 503
     ],
     
-    'App\Core\Exception\GameNotOverException' => [
+    'App\Exceptions\CreateGameUnfinishedException' => [
         'response' => [
             'title' => 'No puedes crear el partido',
             'message' => 'Aún tienes un partido sin finalizar. Debes dar por terminado el partido antes de crear uno nuevo.'
         ],
         'code' => 409
     ],
+    
+    'App\Exceptions\CreateGameMatchmakingUnfinishedException' => [
+        'response' => [
+            'title' => 'No puedes crear el partido',
+            'message' => 'Aún tienes un partido sin finalizar. Debes borrarlo antes de crear uno nuevo.'
+        ],
+        'code' => 409
+    ],
 
-    'App\Core\Exception\GameRequestOwnGameException' => [
+    'App\Exceptions\GameRequestOwnGameException' => [
         'response' => [
             'title' => 'No puedes crear la solicitud',
             'message' => 'No está permitido jugar contra ti mismo un partido.'
+        ],
+        'code' => 409
+    ],
+
+    'App\Exceptions\GameRequestDuplicateException' => [
+        'response' => [
+            'title' => 'No puedes crear la solicitud',
+            'message' => 'Ya has solicitado jugar este partido.'
+        ],
+        'code' => 409
+    ],
+
+    'App\Exceptions\GameRequestAcceptNotOwnGameException' => [
+        'response' => [
+            'title' => 'No puedes aceptar la solicitud',
+            'message' => 'No está permitido aceptar una solicitud de un partido que no has creado.'
         ],
         'code' => 409
     ]

@@ -4,7 +4,8 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Game;
-use App\Core\Exception\GameNotOverException;
+use App\Exceptions\CreateGameUnfinishedException;
+use App\Exceptions\CreateGameMatchmakingUnfinishedException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GamePolicy
@@ -43,7 +44,12 @@ class GamePolicy
     public function create(User $user)
     {
         if($user->hasUnfinishedGames())
-            throw new GameNotOverException;
+        {
+            if($user->unfinished_game->state->name == 'matchmaking')
+                throw new CreateGameMatchmakingUnfinishedException;
+
+            throw new CreateGameUnfinishedException;
+        }
 
         return true;
     }
