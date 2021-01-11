@@ -48,6 +48,14 @@ return [
         ],
         'code' => 409
     ],
+    
+    'App\Exceptions\GameRequestNotMatchmakingException' => [
+        'response' => [
+            'title' => 'No puedes crear la solicitud',
+            'message' => 'La partido ya no acepta solicitudes.'
+        ],
+        'code' => 409
+    ],
 
     'App\Exceptions\GameRequestDuplicateException' => [
         'response' => [
@@ -61,6 +69,14 @@ return [
         'response' => [
             'title' => 'No puedes aceptar la solicitud',
             'message' => 'No está permitido aceptar una solicitud de un partido que no has creado.'
+        ],
+        'code' => 409
+    ],
+    
+    'App\Exceptions\GameRequestAcceptNotMatchmakingException' => [
+        'response' => [
+            'title' => 'No puedes aceptar la solicitud',
+            'message' => 'El partido ya no acepta solicitudes.'
         ],
         'code' => 409
     ]

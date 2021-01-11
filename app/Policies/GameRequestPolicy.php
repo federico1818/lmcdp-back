@@ -8,6 +8,8 @@ use App\Models\GameRequest;
 use App\Exceptions\GameRequestOwnGameException;
 use App\Exceptions\GameRequestDuplicateException;
 use App\Exceptions\GameRequestAcceptNotOwnGameException;
+use App\Exceptions\GameRequestAcceptNotMatchmakingException;
+use App\Exceptions\GameRequestNotMatchmakingException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GameRequestPolicy
@@ -45,11 +47,15 @@ class GameRequestPolicy
      */
     public function create(User $user, Game $game)
     {
+        if($game->state->name != 'matchmaking')
+            throw new GameRequestNotMatchmakingException;
+
+
         if($user->id == $game->user_id)
             throw new GameRequestOwnGameException;
             
         if($game->requests()->where('user_id', $user->id)->exists())
-            throw new GameRequestDuplicateException;    
+            throw new GameRequestDuplicateException;
         
         return true;
     }
@@ -104,6 +110,9 @@ class GameRequestPolicy
 
     public function accept(User $user, GameRequest $gameRequest)
     {
+        if($gameRequest->game->state->name != 'matchmaking')
+            throw new GameRequestAcceptNotMatchmakingException;
+
         if($user->id != $gameRequest->game->user->id)
             throw new GameRequestAcceptNotOwnGameException;
         
