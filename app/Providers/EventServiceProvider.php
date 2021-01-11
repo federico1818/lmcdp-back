@@ -5,9 +5,11 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
-use App\Listeners\ActivateUser;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\GameRequestAccepted;
+use App\Listeners\ActivateUser;
+use App\Listeners\SendGameRequestAcceptedNotification;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         Verified::class => [
             ActivateUser::class
+        ],
+        GameRequestAccepted::class => [
+            SendGameRequestAcceptedNotification::class
         ]
     ];
 
