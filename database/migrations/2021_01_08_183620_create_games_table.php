@@ -16,10 +16,11 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('ball_id')->constrained();
+            $table->foreignId('ball_id')->constrained()->nullable();
             $table->foreignId('platform_id')->constrained();
             $table->unsignedBigInteger('state_id')->default(1);
             $table->foreign('state_id')->references('id')->on('game_states');
+            $table->date('started_at')->nullable();
             $table->timestamps();
         });
     }
