@@ -83,8 +83,16 @@ return [
     
     'App\Exceptions\GameAlreadyStartedException' => [
         'response' => [
-            'title' => 'El partido ya no ha comenzado',
+            'title' => 'El partido ya ha comenzado',
             'message' => 'No puedes iniciar el partido nuevamente.'
+        ],
+        'code' => 409
+    ],
+
+    'App\Exceptions\GameStartedNotByTheirOwnPlayersException' => [
+        'response' => [
+            'title' => 'No puedes iniciar el partido',
+            'message' => 'No eres un jugador de este partido.'
         ],
         'code' => 409
     ]

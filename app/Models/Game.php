@@ -39,4 +39,15 @@ class Game extends Model
     {
         return $this->hasMany(GameRequest::class);
     }
+    
+    public function getAcceptedRequestAttribute()
+    {
+        return $this->requests()->whereNotNull('accepted_at')->first();
+    }
+    
+    public function hasAcceptedRequest()
+    {
+        return $this->requests()->whereNotNull('accepted_at')->exists();
+    }
+    
 }

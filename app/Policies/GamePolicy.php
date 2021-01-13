@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Exceptions\GameAlreadyStartedException;
 use App\Exceptions\CreateGameUnfinishedException;
 use App\Exceptions\CreateGameMatchmakingUnfinishedException;
+use App\Exceptions\GameStartedNotByTheirOwnPlayersException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GamePolicy
@@ -105,6 +106,10 @@ class GamePolicy
 
     public function start(User $user, Game $game)
     {
+        if( ($user->id != $game->user_id) && 
+            ($game->hasAcceptedRequest() && $game->accepted_request->user_id != $user->id))
+            throw new GameStartedNotByTheirOwnPlayersException;
+
         if($game->state->name == 'started')
             throw new GameAlreadyStartedException;
 
