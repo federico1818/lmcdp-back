@@ -13,7 +13,8 @@ class Game extends Model
     protected $fillable = [
         'ball_id',
         'platform_id',
-        'state_id'
+        'state_id',
+        'started_at'
     ];
 
     public function ball()
