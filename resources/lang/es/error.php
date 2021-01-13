@@ -44,7 +44,7 @@ return [
     'App\Exceptions\GameRequestOwnGameException' => [
         'response' => [
             'title' => 'No puedes crear la solicitud',
-            'message' => 'No está permitido jugar contra ti mismo un partido.'
+            'message' => 'No está permitido crear una solicitud de un partido que tú has creado.'
         ],
         'code' => 409
     ],
@@ -81,10 +81,10 @@ return [
         'code' => 409
     ],
     
-    'App\Exceptions\GameAlreadyStartedException' => [
+    'App\Exceptions\GameWasNotAcceptedException' => [
         'response' => [
-            'title' => 'El partido ya ha comenzado',
-            'message' => 'No puedes iniciar el partido nuevamente.'
+            'title' => 'El partido no puede comenzar',
+            'message' => 'Para iniciar el partido debes haber aceptado alguna solicitud.'
         ],
         'code' => 409
     ],

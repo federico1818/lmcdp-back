@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Game;
-use App\Exceptions\GameAlreadyStartedException;
+use App\Exceptions\GameWasNotAcceptedException;
 use App\Exceptions\CreateGameUnfinishedException;
 use App\Exceptions\CreateGameMatchmakingUnfinishedException;
 use App\Exceptions\GameStartedNotByTheirOwnPlayersException;
@@ -110,8 +110,8 @@ class GamePolicy
             ($game->hasAcceptedRequest() && $game->accepted_request->user_id != $user->id))
             throw new GameStartedNotByTheirOwnPlayersException;
 
-        if($game->state->name == 'started')
-            throw new GameAlreadyStartedException;
+        if($game->state->name != 'accepted')
+            throw new GameWasNotAcceptedException;
 
         return true;
     }
