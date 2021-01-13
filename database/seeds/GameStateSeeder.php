@@ -19,7 +19,7 @@ class GameStateSeeder extends Seeder
                 'name' => 'accepted'
             ],
             [
-                'name' => 'in-game'
+                'name' => 'started'
             ],
             [
                 'name' => 'finished'

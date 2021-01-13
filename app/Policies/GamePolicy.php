@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Game;
+use App\Exceptions\GameAlreadyStartedException;
 use App\Exceptions\CreateGameUnfinishedException;
 use App\Exceptions\CreateGameMatchmakingUnfinishedException;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -100,5 +101,13 @@ class GamePolicy
     public function forceDelete(User $user, Game $game)
     {
         //
+    }
+
+    public function start(User $user, Game $game)
+    {
+        if($game->state->name == 'started')
+            throw new GameAlreadyStartedException;
+
+        return true;
     }
 }

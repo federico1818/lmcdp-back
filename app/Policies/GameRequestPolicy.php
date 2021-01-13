@@ -47,12 +47,11 @@ class GameRequestPolicy
      */
     public function create(User $user, Game $game)
     {
-        if($game->state->name != 'matchmaking')
-            throw new GameRequestNotMatchmakingException;
-
-
         if($user->id == $game->user_id)
             throw new GameRequestOwnGameException;
+        
+        if($game->state->name != 'matchmaking')
+            throw new GameRequestNotMatchmakingException;
             
         if($game->requests()->where('user_id', $user->id)->exists())
             throw new GameRequestDuplicateException;

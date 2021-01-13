@@ -79,6 +79,14 @@ return [
             'message' => 'El partido ya no acepta solicitudes.'
         ],
         'code' => 409
+    ],
+    
+    'App\Exceptions\GameAlreadyStartedException' => [
+        'response' => [
+            'title' => 'El partido ya no ha comenzado',
+            'message' => 'No puedes iniciar el partido nuevamente.'
+        ],
+        'code' => 409
     ]
 
 ];

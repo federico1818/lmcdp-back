@@ -10,7 +10,7 @@ class StartGame
 {
     public function __invoke(Game $game)
     {
-        $inGame = GameState::where('name', 'in-game')->firstOrFail();
+        $inGame = GameState::where('name', 'started')->firstOrFail();
 
         $game->state()->associate($inGame)->save();
 

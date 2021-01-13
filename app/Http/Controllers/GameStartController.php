@@ -10,6 +10,8 @@ class GameStartController extends Controller
 {
     public function store(Request $request, Game $game)
     {
+        $this->authorize('start', $game);
+
         (new StartGame)($game);
 
         return $game;
