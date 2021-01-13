@@ -10,6 +10,8 @@ class GameStartController extends Controller
 {
     public function store(Request $request, Game $game)
     {
-        return (new StartGame)($game);
+        (new StartGame)($game);
+
+        return $game;
     }
 }
