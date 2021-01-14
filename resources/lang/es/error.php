@@ -95,6 +95,14 @@ return [
             'message' => 'No eres un jugador de este partido.'
         ],
         'code' => 409
+    ],
+    
+    'App\Exceptions\GameFinishNotByItsUserException' => [
+        'response' => [
+            'title' => 'No puedes finalizar el partido',
+            'message' => 'No puedes dar por finalizado un partido que no creaste.'
+        ],
+        'code' => 409
     ]
 
 ];

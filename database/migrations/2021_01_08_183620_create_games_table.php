@@ -21,6 +21,7 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('state_id')->default(1);
             $table->foreign('state_id')->references('id')->on('game_states');
             $table->date('started_at')->nullable();
+            $table->date('finished_at')->nullable();
             $table->timestamps();
         });
     }

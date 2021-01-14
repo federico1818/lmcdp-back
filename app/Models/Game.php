@@ -14,7 +14,8 @@ class Game extends Model
         'ball_id',
         'platform_id',
         'state_id',
-        'started_at'
+        'started_at',
+        'finished_at'
     ];
 
     public function ball()
