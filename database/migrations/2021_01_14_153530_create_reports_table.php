@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserStatesTable extends Migration
+class CreateReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateUserStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_states', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('reported_id');
+            $table->foreign('reported_id')->references('id')->on('users');
+            $table->text('observation')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateUserStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_states');
+        Schema::dropIfExists('reports');
     }
 }
