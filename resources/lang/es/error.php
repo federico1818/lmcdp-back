@@ -96,6 +96,14 @@ return [
         ],
         'code' => 409
     ],
+    
+    'App\Exceptions\GameFinishedNotAcceptedOrStartedException' => [
+        'response' => [
+            'title' => 'El partido no puede finalizar',
+            'message' => 'Para finalizar el partido debes aceptar alguna solicitud.'
+        ],
+        'code' => 409
+    ],
 
     'App\Exceptions\GameStartedNotByTheirOwnPlayersException' => [
         'response' => [

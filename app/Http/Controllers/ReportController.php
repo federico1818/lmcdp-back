@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReportStoreRequest;
 use App\Models\Game;
 use App\Models\Report;
 use App\Core\Processes\ReportGame;
@@ -22,12 +23,12 @@ class ReportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\ReportStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Game $game)
+    public function store(ReportStoreRequest $request, Game $game)
     {
-        (new ReportGame)($game);
+        (new ReportGame)($game, $request->attributes());
         
         return $game;
     }

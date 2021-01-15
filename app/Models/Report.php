@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    //
+    protected $fillable = [
+        'reported_id',
+        'observation'
+    ];
 }

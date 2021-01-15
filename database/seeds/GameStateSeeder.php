@@ -23,9 +23,6 @@ class GameStateSeeder extends Seeder
             ],
             [
                 'name' => 'finished'
-            ],
-            [
-                'name' => 'cancelled'
             ]
         ]);
     }

@@ -9,6 +9,7 @@ use App\Exceptions\CreateGameUnfinishedException;
 use App\Exceptions\CreateGameMatchmakingUnfinishedException;
 use App\Exceptions\GameStartedNotByTheirOwnPlayersException;
 use App\Exceptions\GameDeletedNotMatchmakingException;
+use App\Exceptions\GameFinishedNotAcceptedOrStartedException;
 use App\Exceptions\GameFinishNotByItsUserException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -125,6 +126,10 @@ class GamePolicy
     {
         if($user->id != $game->user_id)
             throw new GameFinishNotByItsUserException;
+
+        if( $game->state->name != 'accepted' || 
+            $game->state->name != 'started')
+            throw new GameFinishedNotAcceptedOrStartedException;
 
         return true;
     }

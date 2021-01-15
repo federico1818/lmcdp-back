@@ -12,6 +12,7 @@ use App\Traits\RolesAndPermissions;
 use App\Models\UserState;
 use App\Models\Game;
 use App\Models\GameRequest;
+use App\Models\Report;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -97,5 +98,10 @@ class User extends Authenticatable implements MustVerifyEmail
                         $query->where('name', '<>', 'finished');
                     })
                     ->first();
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
     }
 }

@@ -16,6 +16,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('game_id')->constrained();
             $table->unsignedBigInteger('reported_id');
             $table->foreign('reported_id')->references('id')->on('users');
             $table->text('observation')->nullable();
