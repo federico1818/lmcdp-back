@@ -8,6 +8,7 @@ use App\Exceptions\GameWasNotAcceptedException;
 use App\Exceptions\CreateGameUnfinishedException;
 use App\Exceptions\CreateGameMatchmakingUnfinishedException;
 use App\Exceptions\GameStartedNotByTheirOwnPlayersException;
+use App\Exceptions\GameDeletedNotMatchmakingException;
 use App\Exceptions\GameFinishNotByItsUserException;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -78,7 +79,10 @@ class GamePolicy
      */
     public function delete(User $user, Game $game)
     {
-        //
+        if($game->state->name != 'matchmaking')
+            throw new GameDeletedNotMatchmakingException;
+
+        return true;
     }
 
     /**

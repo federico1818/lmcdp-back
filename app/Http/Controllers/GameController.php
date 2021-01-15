@@ -46,18 +46,6 @@ class GameController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Game  $game
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Game $game)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Game  $game
@@ -65,6 +53,10 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        $this->authorize('delete', $game);
+
+        $game->destroy();
+
+        return response()->json(true);
     }
 }

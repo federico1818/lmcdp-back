@@ -81,6 +81,14 @@ return [
         'code' => 409
     ],
     
+    'App\Exceptions\GameDeletedNotMatchmakingException' => [
+        'response' => [
+            'title' => 'No puedes borrar el partido',
+            'message' => 'El partido sólo se puede borrar antes de aceptar solicitudes.'
+        ],
+        'code' => 409
+    ],
+    
     'App\Exceptions\GameWasNotAcceptedException' => [
         'response' => [
             'title' => 'El partido no puede comenzar',
