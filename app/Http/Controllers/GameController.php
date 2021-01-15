@@ -55,7 +55,7 @@ class GameController extends Controller
     {
         $this->authorize('delete', $game);
 
-        $game->destroy();
+        $game->delete();
 
         return response()->json(true);
     }

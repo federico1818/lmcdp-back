@@ -76,7 +76,7 @@ return [
     'App\Exceptions\GameRequestAcceptNotMatchmakingException' => [
         'response' => [
             'title' => 'No puedes aceptar la solicitud',
-            'message' => 'El partido ya no acepta solicitudes.'
+            'message' => 'El partido ya ha aceptado una solicitud.'
         ],
         'code' => 409
     ],

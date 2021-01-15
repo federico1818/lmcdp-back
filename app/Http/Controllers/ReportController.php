@@ -28,6 +28,8 @@ class ReportController extends Controller
      */
     public function store(ReportStoreRequest $request, Game $game)
     {
+        $this->authorize('create', [Report::class, $game]);
+
         (new ReportGame)($game, $request->attributes());
         
         return $game;

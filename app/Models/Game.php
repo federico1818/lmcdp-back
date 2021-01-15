@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Ball;
+use App\Models\Report;
 use App\Models\Platform;
 use App\Models\GameRequest;
 
@@ -43,6 +44,11 @@ class Game extends Model
         return $this->hasMany(GameRequest::class);
     }
     
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+    
     public function getAcceptedRequestAttribute()
     {
         return $this->requests()->whereNotNull('accepted_at')->first();
@@ -75,6 +81,11 @@ class Game extends Model
     public function isOwner(User $user)
     {
         return $user->id == $this->user_id;
+    }
+
+    public function isAPlayer(User $user)
+    {
+        return $this->players->pluck('id')->contains($user->id);
     }
     
 }
